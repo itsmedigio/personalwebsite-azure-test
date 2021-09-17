@@ -5,10 +5,9 @@
 */
 
 node {
-    def gitbranch = 'Dev'
-    def giturl = 'http://fsg-tor1-92.altran.it/sw-hub/isp/timesheet.git'
-    def credentialsId = 'Jenkins_Gitlab'
-    def projectName = 'timesheet'
+    def gitbranch = 'main'
+    def giturl = 'https://github.com/itsmedigio/testrepo.git'
+    def credentialsId = '70f52fee-c9b7-4b6f-b680-3dd3a6d6fbf4'
     def buildConfiguration = 'Release'
     def publishProfile = 'FolderProfile'
     final scmVars = checkout(scm)
@@ -21,28 +20,28 @@ node {
         } 
         // Second stage: build
         stage('NugetRestore') {
-            dir("${projectName}.API") {
+            dir("backend") {
                 bat "echo Current working dir: %cd%"
-                bat ".\.nuget\nuget.exe restore ${projectName}.API.sln"
+                bat "nuget restore SampleWebApiAspNetCore.sln"
             }
         }
         stage('Build'){
             // build backend
-            bat "\"${tool 'MSBuild'}\" ${projectName}.API/${projectName}.API.sln /p:Configuration=${buildConfiguration}" 
-            // build frontend
-            bat """
-                cd ${projectName}.APP
-                npm i
-                npm run gulp build-app
-            """
+            dir ("backend"){
+                bat "dotnet build SampleWebApiAspNetCore.sln /p:Configuration=${buildConfiguration}"
+            }
+            dir ("frontend"){
+                bat """
+                    cd frontend
+                    npm i
+                    npm run build
+                """
+            }
         }
         // Third stage: testing => If a test fails, stop everything
 		stage('Test'){	
-            dir("${projectName}.API") {
-                    bat """
-                    cd ${projectName}.API.Tests/bin/${buildConfiguration}/
-                    dotnet test ${projectName}.API.Tests.dll
-                    """
+            dir("backend") {
+                    bat "dotnet test SampleWebApiAspNetCore.sln"
             }
 		}
         /* Sezione SonarQube (plugin buggato?)
@@ -57,7 +56,7 @@ node {
             }
         }*/
 		stage('Deploy') {
-            bat "\"${tool 'MSBuild'}\" ./${projectName}.API/${projectName}.API/${projectName}.API.csproj /p:Configuration=${buildConfiguration} /p:PublishProfile=${publishProfile}.pubxml  /p:DeployOnBuild=true"
+            bat "dotnet publish SampleWebApiAspNetCore.sln /p:Configuration=${buildConfiguration} /p:PublishProfile=${publishProfile}.pubxml"
 		}
     notify("SUCCESSFUL")
 	}

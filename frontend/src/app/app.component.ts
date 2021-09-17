@@ -1,21 +1,22 @@
 import { Component } from '@angular/core';
-import axios from 'axios';
+import { Food } from 'src/models/Food';
+import { ApiService } from '../services/ApiService.service'
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'personalwebsite-angular';
+  listfoods:Food[];
+  constructor(private _ApiService: ApiService){
+    this.listfoods=[];
+  }
 
   fetchAll(){
-    axios.get('https://localhost:5001/api/v1/Foods/')
-  .then(function (response) {
-    console.log(response.data.value);
-    return response.data.value;
-  })
-  .catch(function (error) {
-    console.log(error);
+  this._ApiService.getFoods().subscribe(data=>{
+    this.listfoods = data.value;
+    console.log(data.value);
   })
   }
 }
