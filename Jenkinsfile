@@ -6,7 +6,7 @@
 
 node {
     def gitbranch = 'main'
-    def giturl = 'https://github.com/itsmedigio/testrepo.git'
+    def giturl = 'https://github.com/itsmedigio/personalwebsite-angular.git'
     def credentialsId = '70f52fee-c9b7-4b6f-b680-3dd3a6d6fbf4'
     def buildConfiguration = 'Release'
     def publishProfile = 'FolderProfile'
