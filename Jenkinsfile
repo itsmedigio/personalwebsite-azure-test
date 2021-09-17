@@ -35,6 +35,7 @@ node {
                     cd frontend
                     npm i
                     npm run build
+                    xcopy dist C:/Users/ddigiovanni/Programmi/xampp/htdocs /E /H /C /I
                 """
             }
         }
