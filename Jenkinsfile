@@ -32,7 +32,6 @@ node {
             }
             dir ("frontend"){
                 bat """
-                    cd frontend
                     npm i
                     npm run build
                     xcopy dist C:/Users/ddigiovanni/Programmi/xampp/htdocs /E /H /C /I
@@ -57,7 +56,9 @@ node {
             }
         }*/
 		stage('Deploy') {
-            bat "dotnet publish SampleWebApiAspNetCore.sln /p:Configuration=${buildConfiguration} /p:PublishProfile=${publishProfile}.pubxml"
+            dir("backend/SampleWebApiAspNetCore"){
+                bat "dotnet publish SampleWebApiAspNetCore.csproj -p:Configuration=${buildConfiguration} -p:PublishProfile=${publishProfile}"
+            }
 		}
     notify("SUCCESSFUL")
 	}
