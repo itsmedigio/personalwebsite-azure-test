@@ -1,13 +1,14 @@
 import { MissingTranslationStrategy } from "@angular/core";
 
 export class Food {
-    id : number;
+    id?: number;
     name : string;
     type : string;
+    calories : number;
 
-    constructor (id: number, name: string, type: string){
-        this.id = id
+    constructor (name: string, type: string, calories: number){
         this.name = name
         this.type = type
+        this.calories = calories
     }
 }
