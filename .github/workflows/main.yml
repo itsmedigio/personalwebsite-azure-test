@@ -42,7 +42,7 @@ jobs:
     - run: cp -a ./build/. ./secondrepo/
     - run: ls -la ./secondrepo/
     - run: |
-        cd ~/secondrepo
+        cd ./secondrepo
         git add .
         git commit -m "GitHub Actions Push from personalwebsite"
         git push
