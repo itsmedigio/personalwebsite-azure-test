@@ -28,19 +28,10 @@ jobs:
     - run: npm run build
     - run: ls -la
     - run: pwd
-    - name: Git Clone Action
-      uses: sudosubin/git-clone-action@v1.0.1
-      with:
-        # Repository owner and name. Ex: sudosubin/git-clone-action
-        repository: itsmedigio/itsmedigio.github.io
-        # Git host platform. Ex: github, gitlab, bitbucket, gitee, or else (git.suckless.org, ...)
-        platform: github # optional, default is github
-        # Git branch or tag to checkout.
-        ref: main # optional
-        # Relative path from current directory, where to clone.
-        path: secondrepo
+    - name: Clone add files and push
       env:
         ACCESS_TOKEN: '${{ secrets.ACCESS_TOKEN }}'
+    - run: git clone https://${{secrets.ACCESS_TOKEN}}@github.com/itsmedigio/personalwebsite-azure-test.git
     - run: cp -a ./build/. ./secondrepo/
     - run: ls -la ./secondrepo/
     - run: |
