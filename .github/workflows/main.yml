@@ -30,17 +30,13 @@ jobs:
     - run: npm run build
     - run: |
         cd ..
-        ls -la
-        pwd
-    # - run: |
-    #     cd ..
-    #     git clone https://${{secrets.ACCESS_TOKEN}}@github.com/itsmedigio/itsmedigio.github.io.git
-    #     cp -a ./build/. ./itsmedigio.github.io.git/
-    #     cd ./itsmedigio.github.io.git/
-    #     git config --global credential.helper cache
-    #     git config --local user.email "itsmedigio@users.noreply.github.com"
-    #     git config --local user.name "itsmedigio"
-    #     git add .
-    #     git commit -m "Move files from personalwebsite repo to deploy repo"
-    #     git push
+        git clone https://${{secrets.ACCESS_TOKEN}}@github.com/itsmedigio/itsmedigio.github.io.git
+        cp -a ./personalwebsite-azure-test/build/. ./itsmedigio.github.io.git/
+        cd ./itsmedigio.github.io.git/
+        git config --global credential.helper cache
+        git config --local user.email "itsmedigio@users.noreply.github.com"
+        git config --local user.name "itsmedigio"
+        git add .
+        git commit -m "Move build artifacts to deploy repo"
+        git push
         
