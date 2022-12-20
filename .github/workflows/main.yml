@@ -24,11 +24,10 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
+      env:
+        ACCESS_TOKEN: '${{ secrets.ACCESS_TOKEN }}'
     - run: npm ci
     - run: npm run build
-    - run: ls -la
-    - run: pwd
-    - name: Clone add files and push
     - run: |
         git clone https://${{secrets.ACCESS_TOKEN}}@github.com/itsmedigio/personalwebsite-azure-test.git
         cp -a ./build/. ./secondrepo/
@@ -39,6 +38,4 @@ jobs:
         git config --local user.name "itsmedigio"
         git commit -a -m "Move files from personalwebsite repo to deploy repo"
         git push
-    env:
-      ACCESS_TOKEN: '${{ secrets.ACCESS_TOKEN }}'
         
