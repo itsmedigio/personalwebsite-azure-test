@@ -39,5 +39,5 @@ jobs:
         ref: main # optional
         # Relative path from current directory, where to clone.
         path: secondrepo
-    - run: cp -rf ./build/* ./secondrepo/*
-    - run: ls -la 
+    - run: cp -a ./build/. ./secondrepo/
+    - run: ls -la ./secondrepo/
