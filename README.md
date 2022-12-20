@@ -1,6 +1,6 @@
 # Welcome to the repository of the personal Website of Davide Di Giovanni
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app)...
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app)
 
 ## GitHub Workflows Experiments
 
