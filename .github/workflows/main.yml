@@ -29,15 +29,16 @@ jobs:
     - run: ls -la
     - run: pwd
     - name: Clone add files and push
-      env:
-        ACCESS_TOKEN: '${{ secrets.ACCESS_TOKEN }}'
-    - run: git clone https://${{secrets.ACCESS_TOKEN}}@github.com/itsmedigio/personalwebsite-azure-test.git
-    - run: cp -a ./build/. ./secondrepo/
-    - run: ls -la ./secondrepo/
     - run: |
+        git clone https://${{secrets.ACCESS_TOKEN}}@github.com/itsmedigio/personalwebsite-azure-test.git
+        cp -a ./build/. ./secondrepo/
+        ls -la ./secondrepo/
         cd ./secondrepo
         git config --global credential.helper cache
         git config --local user.email "itsmedigio@users.noreply.github.com"
         git config --local user.name "itsmedigio"
         git commit -a -m "Move files from personalwebsite repo to deploy repo"
         git push
+    env:
+      ACCESS_TOKEN: '${{ secrets.ACCESS_TOKEN }}'
+        
