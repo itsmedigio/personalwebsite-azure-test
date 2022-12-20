@@ -27,6 +27,7 @@ jobs:
     - run: npm ci
     - run: npm run build
     - run: ls -la
+    - run: pwd
     - name: Git Clone Action
       uses: sudosubin/git-clone-action@v1.0.1
       with:
@@ -38,4 +39,5 @@ jobs:
         ref: main # optional
         # Relative path from current directory, where to clone.
         path: secondrepo
-    - run: ls -la secondrepo
+    - run: cp -rf ./build/* ./secondrepo/*
+    - run: ls -la 
