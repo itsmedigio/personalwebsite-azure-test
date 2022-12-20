@@ -31,7 +31,9 @@ jobs:
     - run: |
         cd ..
         git clone https://${{secrets.ACCESS_TOKEN}}@github.com/itsmedigio/itsmedigio.github.io.git
-        ls -la
+        ls -la ./itsmedigio.github.io.git/
+        echo 'dump content of newely cloned repo'
+        ls -la 
         cp -a ./personalwebsite-azure-test/build/. ./itsmedigio.github.io.git/
         cd ./itsmedigio.github.io.git/
         ls -la
