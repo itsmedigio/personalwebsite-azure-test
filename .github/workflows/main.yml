@@ -31,11 +31,11 @@ jobs:
       uses: sudosubin/git-clone-action@v1.0.1
       with:
         # Repository owner and name. Ex: sudosubin/git-clone-action
-        repository: https://github.com/itsmedigio/itsmedigio.github.io.git
+        repository: itsmedigio.github.io
         # Git host platform. Ex: github, gitlab, bitbucket, gitee, or else (git.suckless.org, ...)
         platform: github # optional, default is github
         # Git branch or tag to checkout.
         ref: main # optional
         # Relative path from current directory, where to clone.
-        path: ~/secondrepo
-    - run: ls -la ~/secondrepo
+        path: secondrepo
+    - run: ls -la secondrepo
