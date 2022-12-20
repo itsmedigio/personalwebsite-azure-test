@@ -7,7 +7,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 - This project gets built with GitHub Actions automatically at every commit/pull_request to master
 - A production build gets created using the same actions and pushed to the itsmedigio.github.io repo
 - You can see the output of the build at [https://itsmedigio.github.io](https://itsmedigio.github.io)
-- If the Azure account that I'm using is still active, you can view the same website at [https://salmon-sea-00adbae03.2.azurestaticapps.net](AzureWebsite)
+- If the Azure account that I'm using is still active, you can view the same website at [this link](https://salmon-sea-00adbae03.2.azurestaticapps.net)
 
 
 ## Available Scripts
