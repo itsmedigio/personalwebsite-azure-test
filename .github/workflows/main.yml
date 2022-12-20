@@ -43,6 +43,11 @@ jobs:
     - run: ls -la ./secondrepo/
     - run: |
         cd ./secondrepo
-        git add .
-        git commit -m "GitHub Actions Push from personalwebsite"
-        git push
+        run: |
+        git config --local user.email "github-actions[bot]@users.noreply.github.com"
+        git config --local user.name "github-actions[bot]"
+        git commit -a -m "Move files from personalwebsite to deploy repo"
+    - name: Push changes
+      uses: ad-m/github-push-action@master
+      with:
+        branch: ${{ github.head_ref }}
