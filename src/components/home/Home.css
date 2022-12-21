@@ -1,0 +1,14 @@
+.homecontents {
+    width: 100%;
+    padding: 20px;
+    height: 100vh;
+    
+}
+
+.welcometext {
+    padding-top: 100px;
+    color: aliceblue;
+    text-align: center;
+    font-size: 96;
+    font-weight: 900;
+}

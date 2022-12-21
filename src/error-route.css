@@ -1,0 +1,23 @@
+.homecontents {
+    width: 100%;
+    padding: 20px;
+    height: 100vh;
+    
+}
+
+.welcometext {
+    padding-top: 20px;
+    color: aliceblue;
+    text-align: center;
+    font-size: 96;
+    font-weight: 700;
+}
+
+
+.error {
+    padding-top: 100px;
+    color: aliceblue;
+    text-align: center;
+    font-size: 150;
+    font-weight: 900;
+}
