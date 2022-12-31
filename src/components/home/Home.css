@@ -6,9 +6,15 @@
 }
 
 .welcometext {
-    padding-top: 100px;
+    margin-top: 0px;
     color: aliceblue;
     text-align: center;
     font-size: 96;
     font-weight: 900;
+}
+
+.customCard {
+    padding-top: 20px;
+    width: 1200px;
+    margin: 0 auto;
 }
