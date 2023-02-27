@@ -1,5 +1,6 @@
 {
   "name": "personalwebsite-azure-test",
+  "homepage": "https://itsmedigio.github.io/#",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -11,6 +12,7 @@
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.5.0",
     "react-scripts": "5.0.1",
+    "sonar-scanner": "^3.1.0",
     "web-vitals": "^2.1.4"
   },
   "scripts": {

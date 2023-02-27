@@ -14,7 +14,7 @@ const AboutMe = () => {
             IT Consultant <br></br> Software Developer
           </h2>
           <p className="my-page-description">
-            Hi there! My name is Davide and I am a 23-year-old male from Turin,
+            Hi there! My name is Davide and I am a 23-year-old folk from Turin,
             Italy. I am highly passionate about IT, in particular about cloud
             computing, DevOps, and programming, and I offer consulting services
             in these areas. I try to stay up to date with the latest

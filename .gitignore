@@ -95,6 +95,8 @@ frontend/node_modules/*
 # production
 /build
 
+/.scannerwork
+
 # misc
 .DS_Store
 .env.local

@@ -1,6 +1,6 @@
 import "../shared.css";
-import "./Home.css";
 import MyCard from "./card/MyCard";
+import "./Home.css";
 
 function Home() {
   return (
@@ -14,13 +14,25 @@ function Home() {
         </h2>
         <div style={{ paddingTop: 20 }} className="customCard row">
           <div className="col-4">
-            <MyCard />
+            <MyCard
+              cardtitle="Angular"
+              cardbody="Internal applications for the banking business, such as Succession Manager, Pledges etc..."
+              cardimagepath="./angular.png"
+            />
           </div>
           <div className="col-4">
-            <MyCard />
+            <MyCard
+              cardtitle="C#"
+              cardbody="Microservices, Console Apps and APIs in .NET Core, API Gateways"
+              cardimagepath="./dotnet.svg"
+            />
           </div>
           <div className="col-4">
-            <MyCard />
+            <MyCard
+              cardtitle="DevOps"
+              cardbody="Azure DevOps Pipelines, cloud resources provisioning, Kubernetes"
+              cardimagepath="./devops.svg"
+            />
           </div>
         </div>
       </div>

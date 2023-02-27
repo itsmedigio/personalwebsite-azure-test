@@ -1,31 +1,16 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
+import { HashRouter } from "react-router-dom";
 import App from "./App";
-import reportWebVitals from "./reportWebVitals";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Home from "./components/home/Home";
 import "./index.css";
-import ErrorPage from "./error-route";
-import AboutMe from "./components/aboutme/aboutme";
-
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <Home></Home>,
-    errorElement: <ErrorPage></ErrorPage>,
-  },
-  {
-    path: "/aboutme",
-    element: <AboutMe></AboutMe>,
-    errorElement: <ErrorPage></ErrorPage>,
-  },
-]);
+import reportWebVitals from "./reportWebVitals";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <App />
-    <RouterProvider router={router} />
+    <HashRouter>
+      <App />
+    </HashRouter>
   </React.StrictMode>
 );
 
@@ -33,3 +18,14 @@ root.render(
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();
+
+/*
+<HashRouter>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Home></Home>} />
+        <Route path="/aboutme" element={<AboutMe></AboutMe>} />
+        <Route path="/*" element={<ErrorPage></ErrorPage>} />
+      </Routes>
+    </HashRouter>
+*/
