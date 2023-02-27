@@ -14,13 +14,13 @@ const AboutMe = () => {
             IT Consultant <br></br> Software Developer
           </h2>
           <p className="my-page-description">
-            Hi there! My name is Davide and I am a 23-year-old folk from Turin,
-            Italy. I am highly passionate about IT, in particular about cloud
-            computing, DevOps, and programming, and I offer consulting services
-            in these areas. I try to stay up to date with the latest
-            technologies and trends in the industry. I have experience working
-            mainly with C# programming languages and dotnet, but I am always
-            eager to learn more.
+            Hi there! I'm Davide and I am a 23-year-old folk from Turin, Italy.
+            I was highly passionate about IT since I was a kid, and I was
+            fortunate enough to build my passion into my job! My main focus,
+            currently, is related to cloud computing, DevOps methodologies, and
+            programming. I have experience working mainly with C# and dotnet,
+            the Azure and IBM Cloud and javascript frameworks such as Angular
+            and React but I am always eager to learn more!
           </p>
         </div>
       </div>
