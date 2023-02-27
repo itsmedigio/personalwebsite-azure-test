@@ -7,7 +7,7 @@ function Home() {
     <>
       <div className={`homecontents background-dark`}>
         <h1 className="welcometext">
-          Hello! I'm Davide and welcome to my personal website!
+          Hello! I'm Davide and welcome to my personal website! 😊
         </h1>
         <h2 style={{ color: "white", textAlign: "center", paddingTop: 20 }}>
           Some things that I've done:
@@ -22,16 +22,16 @@ function Home() {
           </div>
           <div className="col-4">
             <MyCard
-              cardtitle="C#"
-              cardbody="Microservices, Console Apps and APIs in .NET Core, API Gateways"
-              cardimagepath="./dotnet.svg"
+              cardtitle="👑 DevOps 👑"
+              cardbody="Azure DevOps Pipelines, cloud resources provisioning, Kubernetes, Docker Containers, Linux Scripting etc..."
+              cardimagepath="./devops.svg"
             />
           </div>
           <div className="col-4">
             <MyCard
-              cardtitle="DevOps"
-              cardbody="Azure DevOps Pipelines, cloud resources provisioning, Kubernetes"
-              cardimagepath="./devops.svg"
+              cardtitle="C#"
+              cardbody="Microservices, Console Apps and APIs in .NET Core, API Gateways"
+              cardimagepath="./dotnet.svg"
             />
           </div>
         </div>
