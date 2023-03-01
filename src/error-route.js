@@ -7,7 +7,7 @@ export default function ErrorPage() {
         <div className={`homecontents background-dark`}>
           <h1 className="error">404</h1>
           <h2 className="welcometext">
-            Oops! Looks like you landed on a non-existing page...
+            Oops! Looks like you landed on a non-existing page... (yet!)
           </h2>
           <span></span>
           <div style={{ paddingTop: 40 }} className="d-flex align-items-center">

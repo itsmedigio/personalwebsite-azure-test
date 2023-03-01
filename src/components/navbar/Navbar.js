@@ -4,10 +4,9 @@ import "./Navbar.css";
 const Navbar = () => {
   return (
     <nav className={`navbar navbar-expand-lg navbar-dark bg-dark`}>
-      <ul className="navbar-nav">
+      <ul className="navbar-nav mr-auto">
         <li className="logo nav-item nav-link">Davide Di Giovanni</li>
-        <span className="spacer-left"></span>
-        <li className="nav-item spacer-left">
+        <li className="nav-item">
           <NavLink className="nav-link" to={"/"}>
             Home
           </NavLink>
@@ -15,6 +14,13 @@ const Navbar = () => {
         <li className="nav-item">
           <NavLink className="nav-link" to={"/about"}>
             About and Contacts
+          </NavLink>
+        </li>
+      </ul>
+      <ul className="navbar-nav" style={{ marginRight: 20 }}>
+        <li className="nav-item">
+          <NavLink className="nav-link" to={"/playground"}>
+            ✨ Playground (WIP) ✨
           </NavLink>
         </li>
       </ul>
