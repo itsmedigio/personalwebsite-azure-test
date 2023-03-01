@@ -51,7 +51,7 @@ function Home() {
             fontStyle: "italic",
           }}
         >
-          My main interest is currently DevOps and Cloud Technologies
+          My main interest currently are DevOps and Cloud Technologies
         </h2>
         <p style={{ color: "white", paddingTop: 10, paddingLeft: 40 }}>
           With BNP Paribas Asset Management I worked on a Cloud Migration
