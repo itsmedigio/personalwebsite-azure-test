@@ -110,3 +110,4 @@ yarn-error.log*
 # ignore node_modules symlink
 node_modules
 node_modules.nosync
+.nuxt
