@@ -4,7 +4,13 @@
     <nav class="navbar" :class="{ 'sticky': isSticky, 'small': isSmallNavbar }">
       <div class="navbar-content">
         <h1 class="logo" :class="{ 'small': isSmallNavbar }">Davide Di Giovanni</h1>
-        <button class="dark-mode-toggle" @click="toggleDarkMode()">Toggle Dark Mode</button>
+        <div class="flex-right">
+          <p class="light-mode-text">Light mode</p>
+        </div>
+        <label class="form-switch">
+          <input type="checkbox">
+          <i></i>
+        </label>
       </div>
     </nav>
     <!-- Welcome Section -->
@@ -133,6 +139,76 @@ body {
   font-size: 20px;
 }
 
+.form-switch {
+  display: inline-block;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  vertical-align: middle;
+  /* Adjust the vertical alignment as needed */
+}
+
+.form-switch i {
+  position: relative;
+  display: inline-block;
+  margin-right: .5rem;
+  width: 46px;
+  height: 26px;
+  background-color: #000000;
+  border-radius: 20px;
+  vertical-align: text-bottom;
+  transition: all 0.3s linear;
+}
+
+.form-switch i::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 42px;
+  height: 22px;
+  background-color: #888888;
+  border-radius: 11px;
+  transform: translate3d(2px, 2px, 0) scale3d(1, 1, 1);
+  transition: all 0.25s linear;
+}
+
+.form-switch i::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 22px;
+  height: 22px;
+  background-color: #fff;
+  border-radius: 11px;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.24);
+  transform: translate3d(2px, 2px, 0);
+  transition: all 0.2s ease-in-out;
+}
+
+.form-switch:active i::after {
+  width: 28px;
+  transform: translate3d(2px, 2px, 0);
+}
+
+.form-switch:active input:checked+i::after {
+  transform: translate3d(16px, 2px, 0);
+}
+
+.form-switch input {
+  display: none;
+}
+
+.form-switch input:checked+i {
+  background-color: #4BD763;
+}
+
+.form-switch input:checked+i::before {
+  transform: translate3d(18px, 2px, 0) scale3d(0, 0, 0);
+}
+
+.form-switch input:checked+i::after {
+  transform: translate3d(22px, 2px, 0);
+}
+
 body::-webkit-scrollbar {
   display: none !important;
   ;
@@ -163,6 +239,21 @@ body::-webkit-scrollbar {
   font-size: 82px;
   font-weight: bold;
   text-align: center;
+}
+
+.navbar-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.flex-right {
+  margin-left: auto;
+  margin-right: 20px;
+}
+
+.light-mode-text {
+  margin: 0;
 }
 
 .description {
