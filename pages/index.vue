@@ -121,13 +121,13 @@ export default {
 
 
 <style scoped>
+@import 'assets/global.css';
+
 body {
   overflow: hidden !important;
   scrollbar-width: none !important;
-  ;
   /* Firefox */
   -ms-overflow-style: none !important;
-  ;
   /* Internet Explorer 10+ */
 }
 
@@ -211,7 +211,6 @@ body {
 
 body::-webkit-scrollbar {
   display: none !important;
-  ;
   /* Chrome, Safari, Opera */
 }
 
@@ -245,6 +244,8 @@ body::-webkit-scrollbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .flex-right {
@@ -264,7 +265,8 @@ body::-webkit-scrollbar {
 }
 
 .content {
-  padding: 32px;
+  padding: 0;
+  margin: 0;
 }
 
 .buttons {
@@ -303,15 +305,6 @@ body::-webkit-scrollbar {
   position: fixed;
   top: 0;
   width: 100%;
-}
-
-
-.navbar-content {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  max-width: 1200px;
-  margin: 0 auto;
 }
 
 .dark-mode-toggle {
