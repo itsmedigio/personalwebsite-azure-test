@@ -71,7 +71,7 @@ jobs:
           # The source repo is at ../<your-source-repo-name>/
           # You need to replace 'personalwebsite-azure-test' with the actual name of this repository
           # or dynamically get it. For simplicity, we assume 'personalwebsite-azure-test' is the source repo name.
-          cp -a ./personalwebsite-azure-test/${SOURCE_DIR}/. . # Copy contents from source repo's 'out' to target repo root
+          cp -a ../personalwebsite-azure-test/${SOURCE_DIR}/. . # Copy contents from source repo's 'out' to target repo root
 
           ls -la # List files to verify copy
 
