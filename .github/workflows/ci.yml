@@ -40,7 +40,7 @@ jobs:
       #       ${{ runner.os }}-node-
 
       - name: Install dependencies 👨🏻‍💻
-        run: npm ci --prefer-offline --no-audit
+        run: npm ci --prefer-offline --no-audit --force
 
       - name: Build Next.js Static Website 🚀
         run: npm run build # Changed from 'generate' to 'build' for Next.js static export
