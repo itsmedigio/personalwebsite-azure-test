@@ -1,5 +1,0 @@
-sonar-scanner \
-  -Dsonar.projectKey=personalwebsite \
-  -Dsonar.sources=. \
-  -Dsonar.host.url=http://localhost:9090 \
-  -Dsonar.login=sqp_b58badd24753331bccfb8c3d8d7c6bb4868a95b3

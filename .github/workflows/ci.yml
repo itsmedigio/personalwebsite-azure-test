@@ -1,57 +1,84 @@
-name: ci
+name: Deploy Static Website to GitHub Pages
 
 on:
   push:
     branches:
       - main
-      - master
   pull_request:
     branches:
       - main
-      - master
 
 jobs:
-  ci:
+  build-and-deploy: # Renamed job for clarity
     runs-on: ${{ matrix.os }}
 
     strategy:
       matrix:
         os: [ubuntu-latest]
-        node: [lts/*]
+        node: [18.x, 20.x] # Use specific LTS versions instead of lts/* for better reproducibility
 
     steps:
-      - name: Checkout 🛎
-        uses: actions/checkout@master
+      - name: Checkout Source Repository 🛎
+        uses: actions/checkout@v4 # Updated to v4 for latest features/security
 
-      - name: Setup node env 🏗
-        uses: actions/setup-node@v3.0.0
+      - name: Setup Node.js Environment 🏗
+        uses: actions/setup-node@v4 # Updated to v4
         with:
           node-version: ${{ matrix.node }}
-          check-latest: true
+          cache: "npm" # Use built-in cache for npm
+          cache-dependency-path: "**/package-lock.json" # Specify lock file for caching
 
-      - name: Cache node_modules 📦
-        uses: actions/cache@v2.1.7
-        with:
-          path: ~/.npm
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
+      # The separate Cache node_modules step is often redundant with actions/setup-node@v4's built-in cache.
+      # If you encounter issues, you can uncomment and adjust the old cache step,
+      # but try with the built-in one first.
+      # - name: Cache node_modules 📦
+      #   uses: actions/cache@v4 # Updated to v4
+      #   with:
+      #     path: ~/.npm
+      #     key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+      #     restore-keys: |
+      #       ${{ runner.os }}-node-
 
       - name: Install dependencies 👨🏻‍💻
         run: npm ci --prefer-offline --no-audit
 
-      - name: Build static website 👨🏻‍💻
-        run: npm run generate
+      - name: Build Next.js Static Website 🚀
+        run: npm run build # Changed from 'generate' to 'build' for Next.js static export
 
-      - name: Copy to other repo
+      - name: Deploy to itsmedigio.github.io 📤
+        env:
+          GH_PAGES_REPO: itsmedigio/itsmedigio.github.io.git
+          SOURCE_DIR: out # Next.js static export output directory
         run: |
-          cd ..
-          git clone https://${{secrets.ACCESS_TOKEN}}@github.com/itsmedigio/itsmedigio.github.io.git
-          cp -a ./personalwebsite-azure-test/dist/. ./itsmedigio.github.io/
+          # The current working directory is the repository where the workflow runs (e.g., personalwebsite-azure-test)
+          # We need to clone the target repo (itsmedigio.github.io) in a sibling directory.
+          cd .. # Move up one level from the source repo directory
+
+          # Clone the target repository
+          git clone https://${{secrets.ACCESS_TOKEN}}@github.com/$GH_PAGES_REPO
+
+          # Navigate into the cloned target repository
           cd ./itsmedigio.github.io/
-          ls -la
-          git config --global credential.helper cache
-          git config --local user.email "itsmedigio@users.noreply.github.com"
-          git config --local user.name "itsmedigio"
+
+          # Clean out existing files to ensure a fresh deploy (optional but recommended for static sites)
+          # Use `git rm -rf .` if you want to remove all tracked files before copying new ones,
+          # but be careful not to remove .git/
+          git rm -rf *
+          # Re-add .gitignore and other necessary files if they were removed
+          # cp ../<your-source-repo-name>/.gitignore . # Example, adjust as needed
+
+          # Copy the built static files from the source repo's 'out' directory
+          # The source repo is at ../<your-source-repo-name>/
+          # You need to replace 'personalwebsite-azure-test' with the actual name of this repository
+          # or dynamically get it. For simplicity, we assume 'personalwebsite-azure-test' is the source repo name.
+          cp -a ./personalwebsite-azure-test/${SOURCE_DIR}/. . # Copy contents from source repo's 'out' to target repo root
+
+          ls -la # List files to verify copy
+
+          # Configure Git user for commits
+          git config user.email "itsmedigio@users.noreply.github.com"
+          git config user.name "itsmedigio"
+
+          # Add all changes, commit if there are changes, and push
           git add .
-          git diff --quiet && git diff --staged --quiet || git commit -am 'Added deploy files' && git push
+          git diff --quiet && git diff --staged --quiet || git commit -am 'Automated deploy from CI/CD' && git push https://${{secrets.ACCESS_TOKEN}}@github.com/$GH_PAGES_REPO
