@@ -1,3 +1,5 @@
+
+import { ThemeProvider } from '@/components/theme-provider'
 import type { Metadata } from 'next'
 import './globals.css'
 
@@ -6,14 +8,19 @@ export const metadata: Metadata = {
   description: 'Portfolio website for Davide Di Giovanni',
 }
 
+
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en">
-      <body>{children}</body>
+    <html lang="en" suppressHydrationWarning>
+      <body suppressHydrationWarning>
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          {children}
+        </ThemeProvider>
+      </body>
     </html>
   )
 }
