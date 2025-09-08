@@ -5,11 +5,11 @@ export function Footer() {
       <div className="container mx-auto max-w-6xl">
         <div className="flex flex-col md:flex-row justify-between items-center">
           <div className="mb-4 md:mb-0">
-            <p className="text-muted-foreground">© 2025 itsmedigio.github.io.</p>
+            <p className="text-muted-foreground">© 2025 itsmedigio.github.io - P.IVA 13306860019</p>
           </div>
 
           <div className="flex space-x-4">
-            <p>Made with ❤️ by Davide</p>
+            <a href="https://github.com/itsmedigio/personalwebsite-azure-test" target="_blank" rel="noopener noreferrer">Made with Next.js and hosted in GitHub Pages</a>
           </div>
         </div>
       </div>
