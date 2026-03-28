@@ -1,145 +1,109 @@
-"use client"
+'use client'
 
-import { Button } from "@/components/ui/button"; // Import Button
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Input } from "@/components/ui/input"; // Import Input
-import { Label } from "@/components/ui/label"; // Import Label
-import { Textarea } from "@/components/ui/textarea"; // Import Textarea
-import { useForm, ValidationError } from '@formspree/react';
-import { Mail, MapPin } from "lucide-react";
-import { useState } from "react"; // useState is already imported
+import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
+import { Textarea } from "@/components/ui/textarea"
+import { useForm, ValidationError } from '@formspree/react'
+import { useEffect, useState } from "react"
+import { TypingText } from "./typing-text"
 
 export function Contact() {
-  // formData state is not needed here if you are using Formspree's handleSubmit directly
-  // and letting it manage the form data via name attributes.
-  // We'll keep it for clarity if you decide to add more client-side validation later,
-  // but it's not strictly used by Formspree's basic integration.
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    message: "",
-  });
+  const [showContent, setShowContent] = useState(false)
 
-  // This handleChange function is still useful if you want to control inputs,
-  // or if you re-introduce client-side validation before submission.
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
+  useEffect(() => {
+    const timer = setTimeout(() => setShowContent(true), 500)
+    return () => clearTimeout(timer)
+  }, [])
 
-
-  // --- ContactForm component updated ---
   function ContactForm() {
-    // Make sure 'xvgrabqj' is your actual Formspree form ID
-    const [state, handleSubmit] = useForm("xvgrabqj");
+    const [state, handleSubmit] = useForm("xvgrabqj")
 
-    // Display success message
     if (state.succeeded) {
       return (
-        <div className="text-center py-8">
-          <p className="text-lg font-semibold text-green-600">Thanks for contacting me!</p>
-          <p className="text-muted-foreground mt-2">I'll get back to you as soon as possible.</p>
+        <div className="text-center py-8 text-green-400">
+          <TypingText text="Message sent successfully! I'll get back to you soon." speed={50} />
         </div>
-      );
+      )
     }
 
     return (
-      <form onSubmit={handleSubmit} className="space-y-4"> {/* Use space-y-4 for consistent spacing */}
-
-        {/* Email Input */}
+      <form onSubmit={handleSubmit} className="space-y-4 font-mono">
         <div>
-          <Label htmlFor="email">Your Email Address</Label>
+          <Label htmlFor="email" className="text-green-300">To: </Label>
           <Input
             id="email"
             type="email"
             name="email"
-            required // Add required attribute
-          // value={formData.email}
-          // onChange={handleChange}
+            required
+            className="bg-black border-green-400 text-green-400 font-mono"
+            placeholder="your.email@example.com"
           />
           <ValidationError
             prefix="Email"
             field="email"
             errors={state.errors}
-            className="text-red-500 text-sm mt-1" // Style error messages
+            className="text-red-500 text-sm mt-1"
           />
         </div>
 
-        {/* Message Textarea */}
         <div>
-          <Label htmlFor="message">Message</Label>
+          <Label htmlFor="message" className="text-green-300">Message: </Label>
           <Textarea
             id="message"
             name="message"
-            rows={4} // Consistent row count for textarea
-            required // Add required attribute
-          // value={formData.message}
-          // onChange={handleChange}
+            rows={4}
+            required
+            className="bg-black border-green-400 text-green-400 font-mono"
+            placeholder="Type your message here..."
           />
           <ValidationError
             prefix="Message"
             field="message"
             errors={state.errors}
-            className="text-red-500 text-sm mt-1" // Style error messages
+            className="text-red-500 text-sm mt-1"
           />
         </div>
 
-        {/* Submit Button */}
-        <Button type="submit" disabled={state.submitting} className="w-full">
-          {state.submitting ? "Sending..." : "Send Message"} {/* Provide feedback during submission */}
+        <Button type="submit" disabled={state.submitting} className="w-full bg-green-400 text-black hover:bg-green-300 font-mono">
+          {state.submitting ? "Sending..." : "sendmail"}
         </Button>
 
-        {/* General Form Error (if any, e.g., network issues) */}
         <ValidationError
           errors={state.errors}
-          className="text-red-500 text-sm mt-1" // Style general errors
+          className="text-red-500 text-sm mt-1"
         />
       </form>
-    );
+    )
   }
 
-  // --- Main Contact section remains the same ---
   return (
-    <section id="contact" className="py-20 px-4 sm:px-6 lg:px-8 bg-muted/50">
-      <div className="container mx-auto max-w-6xl">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl sm:text-4xl font-bold mb-4">Get In Touch</h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            I'm always open to discussing new opportunities, interesting projects, or just having a chat.
-          </p>
-        </div>
-
-        <div className="grid md:grid-cols-2 gap-12">
-          <div>
-            <h3 className="text-2xl font-semibold mb-6">Let's Connect</h3>
-            <p className="text-muted-foreground mb-8">
-              Whether you have a project in mind, want to collaborate, or just want to say hello, I'd love to hear from
-              you. Feel free to reach out through any of the channels below.
-            </p>
-
-            <div className="space-y-4">
-              <div className="flex items-center space-x-3">
-                <Mail className="h-5 w-5 text-primary" />
-                <span>davidedigiovanni999@gmail.com</span>
-              </div>
-              <div className="flex items-center space-x-3">
-                <MapPin className="h-5 w-5 text-primary" />
-                <span>Turin, Italy</span>
-              </div>
-            </div>
+    <section id="contact" className="py-20 px-4 sm:px-6 lg:px-8 bg-black text-green-400">
+      <div className="container mx-auto max-w-6xl font-mono">
+        <div className="mb-16">
+          <div className="flex items-center mb-4">
+            <span className="text-green-400">$ </span>
+            <TypingText text="mail -s 'Hello' davide@digiovanni.dev" speed={100} onComplete={() => setShowContent(true)} />
           </div>
-
-          <Card>
-            <CardHeader>
-              <CardTitle>Send a Message</CardTitle>
-              <CardDescription>Fill out the form below and I'll get back to you as soon as possible.</CardDescription>
-            </CardHeader>
-            <CardContent>
-              {/* Render the updated ContactForm component */}
+          {showContent && (
+            <div className="ml-4">
+              <TypingText text="Subject: Hello" speed={50} />
+              <br />
+              <TypingText text="From: you@domain.com" speed={30} />
+              <br />
+              <TypingText text="To: davide@digiovanni.dev" speed={30} />
+              <br />
+              <br />
+              <TypingText text="I'm always open to discussing new opportunities, interesting projects, or just having a chat." speed={30} />
+              <br />
+              <TypingText text="Location: Turin, Italy" speed={30} />
+              <br />
+              <br />
               <ContactForm />
-            </CardContent>
-          </Card>
+            </div>
+          )}
         </div>
       </div>
     </section>
-  );
+  )
 }

@@ -1,17 +1,34 @@
+'use client'
+
+import { useEffect, useState } from "react"
 
 export function Footer() {
-  return (
-    <footer className="bg-background border-t py-12 px-4 sm:px-6 lg:px-8">
-      <div className="container mx-auto max-w-6xl">
-        <div className="flex flex-col md:flex-row justify-between items-center">
-          <div className="mb-4 md:mb-0">
-            <p className="text-muted-foreground">© 2025 itsmedigio.github.io - P.IVA 13306860019</p>
-          </div>
+  const [time, setTime] = useState("")
+  
+  useEffect(() => {
+    const updateTime = () => {
+      const now = new Date()
+      setTime(now.toLocaleTimeString('en-US', { hour12: false }) + " " + now.toLocaleDateString())
+    }
+    updateTime()
+    const intval = setInterval(updateTime, 1000)
+    return () => clearInterval(intval)
+  }, [])
 
-          <div className="flex space-x-4">
-            <a href="https://github.com/itsmedigio/personalwebsite-azure-test" target="_blank" rel="noopener noreferrer">Made with Next.js and hosted in GitHub Pages</a>
-          </div>
-        </div>
+  return (
+    <footer className="bg-green-600 text-black font-mono text-sm py-1 px-2 fixed bottom-0 w-full z-50 flex flex-col md:flex-row justify-between items-center shadow-[0_-2px_10px_rgba(0,255,0,0.2)]">
+      <div className="flex items-center space-x-4">
+        <span className="bg-black text-green-500 px-2 font-bold">[0] portfolio</span>
+        <span className="hidden md:inline">0:bash*</span>
+        <span className="hidden md:inline">1:node- server</span>
+        <span className="hidden md:inline">2:vim</span>
+      </div>
+      
+      <div className="flex items-center space-x-4 text-xs md:text-sm">
+        <span className="hidden lg:inline">© 2025 itsmedigio.github.io</span>
+        <span className="hidden md:inline">UPTIME: 42d 13h</span>
+        <span className="hidden lg:inline">MEM: [||||||    ] 60%</span>
+        <span>{time}</span>
       </div>
     </footer>
   )

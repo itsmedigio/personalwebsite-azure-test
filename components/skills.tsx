@@ -1,78 +1,91 @@
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Progress } from "@/components/ui/progress";
+'use client'
+
+import { useEffect, useState } from "react"
+import { TypingText } from "./typing-text"
 
 export function Skills() {
+  const [showContent, setShowContent] = useState(false)
+  const [currentCategory, setCurrentCategory] = useState(0)
+
   const skillCategories = [
     {
       title: "DevOps & Automation",
       skills: [
-        { name: "Ansible / AWX / AAP", level: 95 }, // Combine related tools for clarity
-        { name: "Pipelines (CI/CD)", level: 85 }, // Clarify "Pipelines"
-        { name: "PowerShell", level: 80 },
-        { name: "Python (Scripting & Automation)", level: 90 }, // Emphasize use case
-        { name: "Terraform (IaC)", level: 85 } // Add Terraform explicitly given your GCP project
+        "Ansible / AWX / AAP",
+        "Pipelines (CI/CD)",
+        "PowerShell",
+        "Python (Scripting & Automation)",
+        "Terraform (IaC)"
       ],
     },
     {
       title: "Cloud Platforms & Orchestration",
       skills: [
-        { name: "Google Cloud Platform (GCP)", level: 80 },
-        { name: "Azure", level: 80 },
-        { name: "Kubernetes / OpenShift", level: 90 }, // Combine and add OpenShift
-        { name: "VMware", level: 85 }, // Essential for hybrid cloud
+        "Google Cloud Platform (GCP)",
+        "Azure",
+        "Kubernetes / OpenShift",
+        "VMware",
       ],
     },
     {
-      title: "Development & Data", // Renamed to better reflect content
+      title: "Development & Data",
       skills: [
-        { name: "C# / .NET", level: 85 },
-        { name: "React", level: 70 },
-        { name: "Angular", level: 75 },
-        { name: "TypeScript", level: 80 },
-        { name: "SQL Server", level: 85 }, // Crucial given your project
+        "C# / .NET",
+        "React",
+        "Angular",
+        "TypeScript",
+        "SQL Server",
       ],
     },
     {
-      title: "Tools & Methodologies", // Broader category for common tools
+      title: "Tools & Methodologies",
       skills: [
-        { name: "Git / GitHub / Bitbucket", level: 90 },
-        { name: "Azure DevOps (Boards, Repos, Pipelines)", level: 85 }, // Be specific about Azure DevOps parts
-        { name: "Jira / Confluence", level: 90 },
-        { name: "SonarQube / Nexus IQ", level: 75 }, // Add these from your project
-        { name: "CyberArk (Credential Management)", level: 70 } // Add this from your project
+        "Git / GitHub / Bitbucket",
+        "Azure DevOps",
+        "Jira / Confluence",
+        "SonarQube / Nexus IQ",
+        "CyberArk"
       ],
     },
-  ];
+  ]
+
+  useEffect(() => {
+    const timer = setTimeout(() => setShowContent(true), 500)
+    return () => clearTimeout(timer)
+  }, [])
+
+  useEffect(() => {
+    if (showContent && currentCategory < skillCategories.length) {
+      const timer = setTimeout(() => setCurrentCategory(prev => prev + 1), 2000)
+      return () => clearTimeout(timer)
+    }
+  }, [showContent, currentCategory, skillCategories.length])
 
   return (
-    <section id="skills" className="py-20 px-4 sm:px-6 lg:px-8">
-      <div className="container mx-auto max-w-6xl">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl sm:text-4xl font-bold mb-4">Skills & Technologies</h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Here are the technologies and tools I work with to bring ideas to life.
-          </p>
-        </div>
-
-        <div className="grid md:grid-cols-4 gap-6">
-          {skillCategories.map((category, index) => (
-            <Card key={index}>
-              <CardHeader>
-                <CardTitle className="text-center">{category.title}</CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                {category.skills.map((skill) => (
-                  <div key={skill.name}>
-                    <div className="flex justify-between mb-2">
-                      <span className="text-sm font-medium">{skill.name}</span>
-                      <span className="text-sm text-muted-foreground">{skill.level}%</span>
+    <section id="skills" className="py-20 px-4 sm:px-6 lg:px-8 bg-black text-green-400">
+      <div className="container mx-auto max-w-6xl font-mono">
+        <div className="mb-16">
+          <div className="flex items-center mb-4">
+            <span className="text-green-400">$ </span>
+            <TypingText text="cat skills.yml" speed={100} onComplete={() => setShowContent(true)} />
+          </div>
+          {showContent && (
+            <div className="ml-4">
+              {skillCategories.slice(0, currentCategory + 1).map((category, index) => (
+                <div key={index} className="mb-6">
+                  <TypingText text={`[${category.title}]`} speed={50} />
+                  <br />
+                  {category.skills.map((skill) => (
+                    <div key={skill} className="ml-4">
+                      <TypingText text={`- ${skill}`} speed={30} />
+                      <br />
                     </div>
-                    <Progress value={skill.level} className="h-2" />
-                  </div>
-                ))}
-              </CardContent>
-            </Card>
-          ))}
+                  ))}
+                  <br />
+                </div>
+              ))}
+            </div>
+          )}
         </div>
       </div>
     </section>
