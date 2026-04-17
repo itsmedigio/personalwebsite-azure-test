@@ -9,10 +9,22 @@ export function Skills() {
 
   const skillCategories = [
     {
+      title: "Operating Systems",
+      skills: [
+        "Linux management and administration",
+        "OS patching and hardening",
+        "Windows Server management",
+        "Failover Clustering",
+        "Virtualization",
+        "PAM solutions (CyberArk/Delinea)"
+      ],
+    },
+    {
       title: "DevOps & Automation",
       skills: [
         "Ansible / AWX / AAP",
         "Pipelines (CI/CD)",
+        "Rundeck / PagerDuty",
         "PowerShell",
         "Python (Scripting & Automation)",
         "Terraform (IaC)"
@@ -23,8 +35,11 @@ export function Skills() {
       skills: [
         "Google Cloud Platform (GCP)",
         "Azure",
+        "AWS",
         "Kubernetes / OpenShift",
-        "VMware",
+        "VMware vSphere / Microsoft SC VMM",
+        "Microsoft SQL Server",
+        "PostgreSQL"
       ],
     },
     {
@@ -34,17 +49,17 @@ export function Skills() {
         "React",
         "Angular",
         "TypeScript",
-        "SQL Server",
+        "PowerBI",
+        "Tableau"
       ],
     },
     {
       title: "Tools & Methodologies",
       skills: [
-        "Git / GitHub / Bitbucket",
+        "GitOps / DevSecOps",
         "Azure DevOps",
         "Jira / Confluence",
-        "SonarQube / Nexus IQ",
-        "CyberArk"
+        "SonarQube / Nexus IQ"
       ],
     },
   ]

@@ -30,7 +30,7 @@ export function Contact() {
     return (
       <form onSubmit={handleSubmit} className="space-y-4 font-mono">
         <div>
-          <Label htmlFor="email" className="text-green-300">To: </Label>
+          <Label htmlFor="email" className="text-green-300">Your email to be contacted at: </Label>
           <Input
             id="email"
             type="email"
@@ -83,20 +83,18 @@ export function Contact() {
         <div className="mb-16">
           <div className="flex items-center mb-4">
             <span className="text-green-400">$ </span>
-            <TypingText text="mail -s 'Hello' davide@digiovanni.dev" speed={100} onComplete={() => setShowContent(true)} />
+            <TypingText text="mail -s 'Hello' davidedigiovanni999@gmail.com" speed={100} onComplete={() => setShowContent(true)} />
           </div>
           {showContent && (
             <div className="ml-4">
-              <TypingText text="Subject: Hello" speed={50} />
+              <TypingText text="Subject: New Project Opportunity" speed={50} />
               <br />
               <TypingText text="From: you@domain.com" speed={30} />
               <br />
-              <TypingText text="To: davide@digiovanni.dev" speed={30} />
+              <TypingText text="To: davidedigiovanni999@gmail.com" speed={30} />
               <br />
               <br />
-              <TypingText text="I'm always open to discussing new opportunities, interesting projects, or just having a chat." speed={30} />
-              <br />
-              <TypingText text="Location: Turin, Italy" speed={30} />
+              <TypingText text="I'm always open to discussing new opportunities, interesting projects, or just having a chat. Use the form below to get in touch with me" speed={30} />
               <br />
               <br />
               <ContactForm />

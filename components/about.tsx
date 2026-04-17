@@ -17,30 +17,28 @@ export function About() {
         <div className="mb-16">
           <div className="flex items-center mb-4">
             <span className="text-green-400">$ </span>
-            <TypingText text="cat about.md" speed={100} onComplete={() => setShowContent(true)} />
+            <TypingText text=" cat about.md" speed={100} onComplete={() => setShowContent(true)} />
           </div>
           {showContent && (
             <div className="ml-4">
               <TypingText text="# About Me" speed={50} />
               <br />
-              <TypingText text="Ever since I was a kid, computers have fascinated me. Now, as a DevOps Engineer," speed={30} />
+              <TypingText text="Ever since I was a kid, I liked messing around with computers—breaking things, fixing them, and figuring out how they worked." speed={30} />
               <br />
-              <TypingText text="I get to turn that passion into practical solutions, designing and implementing" speed={30} />
+              <TypingText text="Today I’m a DevOps Engineer, mostly focused on automating infrastructure and making systems behave the way they’re supposed to." speed={30} />
               <br />
-              <TypingText text="systems that bring order and automation to even the most complex infrastructure." speed={30} />
+              <TypingText text="My daily routine involves working with tools such as Ansible, Terraform, Openshift, Linux and many many more" speed={30} />
               <br />
               <br />
-              <TypingText text="## My Story" speed={50} />
+              <TypingText text="# My Story" speed={50} />
               <br />
-              <TypingText text="After IT school and a two-year dive into Cloud, Big Data, and IoT," speed={30} />
+              <TypingText text="After earning my diploma in IT, I attended ITS ICT Piemonte, where I specialized in Cloud Computing, Big Data, and IoT." speed={30} />
               <br />
               <TypingText text="I kicked off my career as a Full Stack Developer. But I quickly realized" speed={30} />
               <br />
-              <TypingText text="my true calling was in solving tough problems, which pulled me towards DevOps." speed={30} />
+              <TypingText text="I preferred working with infrastructure and automation to solve tough problems, which pulled me towards DevOps." speed={30} />
               <br />
-              <TypingText text="My coding background has been incredibly useful for personal projects" speed={30} />
-              <br />
-              <TypingText text="and all the Python development I do now." speed={30} />
+              <TypingText text="My coding background has nevertheless been incredibly useful for various projects" speed={30} />
               <br />
               <br />
               <TypingText text="Skills: Ansible Automation, VMWare, Linux, Kubernetes" speed={30} />
@@ -54,21 +52,21 @@ export function About() {
               <div className="text-2xl mb-4">{'</>'}</div>
               <h3 className="text-xl font-semibold mb-2 text-green-300">Clean Code</h3>
               <p className="text-green-200">
-                Writing maintainable, scalable, and efficient code that stands the test of time.
+                Wrote maintainable, scalable, and efficient code
               </p>
             </div>
             <div className="border border-green-400 p-6 text-center">
               <div className="text-2xl mb-4">$</div>
               <h3 className="text-xl font-semibold mb-2 text-green-300">Optimize Costs</h3>
               <p className="text-green-200">
-                Designing efficient DevOps strategies that deliver cost savings and resource optimization.
+                Delivered strategies that resulted in cost savings and resource optimization.
               </p>
             </div>
             <div className="border border-green-400 p-6 text-center">
-              <div className="text-2xl mb-4">⚡</div>
+              <div className="text-2xl mb-4">§</div>
               <h3 className="text-xl font-semibold mb-2 text-green-300">Collaboration</h3>
               <p className="text-green-200">
-                Bringing together dev and ops teams with robust tools and streamlined workflows.
+                Used tools such as Jira/Confluence to facilitate communication across teams
               </p>
             </div>
           </div>

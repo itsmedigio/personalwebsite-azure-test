@@ -4,7 +4,7 @@ import { useEffect, useState } from "react"
 
 export function Footer() {
   const [time, setTime] = useState("")
-  
+
   useEffect(() => {
     const updateTime = () => {
       const now = new Date()
@@ -20,12 +20,13 @@ export function Footer() {
       <div className="flex items-center space-x-4">
         <span className="bg-black text-green-500 px-2 font-bold">[0] portfolio</span>
         <span className="hidden md:inline">0:bash*</span>
-        <span className="hidden md:inline">1:node- server</span>
+        <span className="hidden md:inline">1:node-server</span>
         <span className="hidden md:inline">2:vim</span>
       </div>
-      
+
       <div className="flex items-center space-x-4 text-xs md:text-sm">
-        <span className="hidden lg:inline">© 2025 itsmedigio.github.io</span>
+        <span className="hidden lg:inline">P.IVA: 13306860019</span>
+        <span className="hidden lg:inline">© 2026 itsmedigio.github.io</span>
         <span className="hidden md:inline">UPTIME: 42d 13h</span>
         <span className="hidden lg:inline">MEM: [||||||    ] 60%</span>
         <span>{time}</span>
