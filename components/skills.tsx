@@ -9,10 +9,22 @@ export function Skills() {
 
   const skillCategories = [
     {
+      title: "Operating Systems",
+      skills: [
+        "Linux management and administration",
+        "OS patching and hardening",
+        "Windows Server management",
+        "Failover Clustering",
+        "Virtualization",
+        "PAM solutions (CyberArk/Delinea)"
+      ],
+    },
+    {
       title: "DevOps & Automation",
       skills: [
         "Ansible / AWX / AAP",
         "Pipelines (CI/CD)",
+        "Rundeck / PagerDuty",
         "PowerShell",
         "Python (Scripting & Automation)",
         "Terraform (IaC)"
@@ -23,8 +35,11 @@ export function Skills() {
       skills: [
         "Google Cloud Platform (GCP)",
         "Azure",
+        "AWS",
         "Kubernetes / OpenShift",
-        "VMware",
+        "VMware vSphere / Microsoft SC VMM",
+        "Microsoft SQL Server",
+        "PostgreSQL"
       ],
     },
     {
@@ -34,17 +49,17 @@ export function Skills() {
         "React",
         "Angular",
         "TypeScript",
-        "SQL Server",
+        "PowerBI",
+        "Tableau"
       ],
     },
     {
       title: "Tools & Methodologies",
       skills: [
-        "Git / GitHub / Bitbucket",
+        "GitOps / DevSecOps",
         "Azure DevOps",
         "Jira / Confluence",
-        "SonarQube / Nexus IQ",
-        "CyberArk"
+        "SonarQube / Nexus IQ"
       ],
     },
   ]
@@ -62,12 +77,12 @@ export function Skills() {
   }, [showContent, currentCategory, skillCategories.length])
 
   return (
-    <section id="skills" className="py-20 px-4 sm:px-6 lg:px-8 bg-black text-green-400">
+    <section id="skills" className="py-20 px-4 sm:px-6 lg:px-8 bg-background text-green-400">
       <div className="container mx-auto max-w-6xl font-mono">
         <div className="mb-16">
           <div className="flex items-center mb-4">
             <span className="text-green-400">$ </span>
-            <TypingText text="cat skills.yml" speed={100} onComplete={() => setShowContent(true)} />
+            <span className="text-2xl"><TypingText text="cat skills.yml" speed={100} onComplete={() => setShowContent(true)} /></span>
           </div>
           {showContent && (
             <div className="ml-4">

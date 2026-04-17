@@ -20,10 +20,10 @@ export function Hero() {
   }, [])
 
   return (
-    <section id="home" className="min-h-screen flex flex-col justify-center px-4 sm:px-6 lg:px-8 bg-black text-green-400">
+    <section id="home" className="min-h-screen flex flex-col justify-center px-4 sm:px-6 lg:px-8 bg-background text-green-400">
       <div className="text-left max-w-4xl mx-auto font-mono w-full">
         <div className="mb-8 hidden md:block text-green-500 font-bold whitespace-pre">
-{`██████╗  █████╗ ██╗   ██╗██╗██████╗ ███████╗
+          {`██████╗  █████╗ ██╗   ██╗██╗██████╗ ███████╗
 ██╔══██╗██╔══██╗██║   ██║██║██╔══██╗██╔════╝
 ██║  ██║███████║██║   ██║██║██║  ██║█████╗  
 ██║  ██║██╔══██║╚██╗ ██╔╝██║██║  ██║██╔══╝  
@@ -34,13 +34,13 @@ export function Hero() {
         <div className="mb-8">
           <div className="flex items-center mb-4">
             <span className="text-green-400 mr-2">itsmedigio@portfolio:~$</span>
-            <TypingText text="whoami" speed={100} showCursor={!showContent} onComplete={() => setShowContent(true)} />
+            <span className="text-2xl"><TypingText text="whoami" speed={100} showCursor={!showContent} onComplete={() => setShowContent(true)} /></span>
           </div>
           {showContent && (
             <div className="ml-4">
-              <TypingText text="Davide Di Giovanni" speed={50} showCursor={false} />
+              <span className="text-xl"><TypingText text="Davide Di Giovanni" speed={50} showCursor={false} /></span>
               <br />
-              <TypingText text="DevOps Engineer | Automation Enthusiast | Cloud Architect" speed={30} showCursor={false} />
+              <span className="text-lg"><TypingText text="DevOps Engineer | Automation Enthusiast | Cloud Architect" speed={30} showCursor={false} /></span>
             </div>
           )}
         </div>
