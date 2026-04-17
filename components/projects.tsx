@@ -47,12 +47,12 @@ export function Projects() {
   }, [showContent, currentProject, projects.length])
 
   return (
-    <section id="projects" className="py-20 px-4 sm:px-6 lg:px-8 bg-black text-green-400">
+    <section id="projects" className="py-20 px-4 sm:px-6 lg:px-8 bg-background text-green-400">
       <div className="container mx-auto max-w-6xl font-mono">
         <div className="mb-16">
           <div className="flex items-center mb-4">
             <span className="text-green-400">$ </span>
-            <TypingText text="ls -la projects/" speed={100} onComplete={() => setShowContent(true)} />
+            <span className="text-2xl"><TypingText text="ls -la projects/" speed={100} onComplete={() => setShowContent(true)} /></span>
           </div>
           {showContent && (
             <div className="ml-4">
