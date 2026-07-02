@@ -25,7 +25,7 @@ export function About() {
               <br />
               <TypingText text="Ever since I was a kid, I liked messing around with computers—breaking things, fixing them, and figuring out how they worked." speed={30} />
               <br />
-              <TypingText text="Today I’m a DevOps Engineer, mostly focused on automating infrastructure and making systems behave the way they’re supposed to." speed={30} />
+              <TypingText text="Today I am a DevOps Engineer, mostly focused on automating infrastructure and making systems behave the way they’re supposed to." speed={30} />
               <br />
               <TypingText text="My daily routine involves working with tools such as Ansible, Terraform, Openshift, Linux and many many more" speed={30} />
               <br />
