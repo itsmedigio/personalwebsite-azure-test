@@ -83,7 +83,7 @@ export function Contact() {
         <div className="mb-16">
           <div className="flex items-center mb-4">
             <span className="text-green-400">$ </span>
-            <TypingText text="mail -s 'Hello' davidedigiovanni999@gmail.com" speed={100} onComplete={() => setShowContent(true)} />
+            <TypingText text="mail -s 'Hello' davide@davidedigiovanni.it" speed={100} onComplete={() => setShowContent(true)} />
           </div>
           {showContent && (
             <div className="ml-4">
@@ -91,7 +91,7 @@ export function Contact() {
               <br />
               <TypingText text="From: you@domain.com" speed={30} />
               <br />
-              <TypingText text="To: davidedigiovanni999@gmail.com" speed={30} />
+              <TypingText text="To: davide@davidedigiovanni.it" speed={30} />
               <br />
               <br />
               <TypingText text="I'm always open to discussing new opportunities, interesting projects, or just having a chat. Use the form below to get in touch with me" speed={30} />
