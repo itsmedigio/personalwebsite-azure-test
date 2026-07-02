@@ -34,6 +34,16 @@ jobs:
       - name: Build Next.js Static Website 🚀
         run: npm run build # Changed from 'generate' to 'build' for Next.js static export
 
+      - name: Run Gitleaks 🔐
+        uses: gitleaks/gitleaks-action@v2
+
+      - name: Run Trivy FS scan 🛡️
+        uses: aquasecurity/trivy-action@master
+        with:
+          scan-type: fs
+          format: table
+          exit-code: 0
+
       - name: Deploy to itsmedigio.github.io 📤
         env:
           GH_PAGES_REPO: itsmedigio/itsmedigio.github.io.git
@@ -52,6 +62,8 @@ jobs:
           git rm -rf *
 
           cp -a ../personalwebsite-azure-test/${SOURCE_DIR}/. . # Copy contents from source repo's 'out' to target repo root
+
+          cp -a ../personalwebsite-azure-test/CNAME .
 
           ls -la # List files to verify copy
 
