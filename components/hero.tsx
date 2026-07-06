@@ -1,7 +1,7 @@
 'use client'
 
 import { Button } from "@/components/ui/button"
-import { ArrowDown, Github, Linkedin, Mail } from "lucide-react"
+import { ArrowDown, Contact, GitPullRequestCreateArrow, Mail } from "lucide-react"
 import Link from "next/link"
 import { useEffect, useState } from "react"
 import { TypingText } from "./typing-text"
@@ -19,16 +19,21 @@ export function Hero() {
     }
   }, [])
 
+  const banner = String.raw`
+     ▜            ▗     
+▌▌▌█▌▐ ▛▘▛▌▛▛▌█▌  ▜▘▛▌  
+▚▚▘▙▖▐▖▙▖▙▌▌▌▌▙▖  ▐▖▙▌     
+             ▗ ▐▘  ▜ ▘  
+▛▛▌▌▌  ▛▌▛▌▛▘▜▘▜▘▛▌▐ ▌▛▌
+▌▌▌▙▌  ▙▌▙▌▌ ▐▖▐ ▙▌▐▖▌▙▌
+   ▄▌  ▌                
+`;
+
   return (
     <section id="home" className="min-h-screen flex flex-col justify-center px-4 sm:px-6 lg:px-8 bg-background text-green-400">
       <div className="text-left max-w-4xl mx-auto font-mono w-full">
         <div className="mb-8 hidden md:block text-green-500 font-bold whitespace-pre">
-          {`██████╗  █████╗ ██╗   ██╗██╗██████╗ ███████╗
-██╔══██╗██╔══██╗██║   ██║██║██╔══██╗██╔════╝
-██║  ██║███████║██║   ██║██║██║  ██║█████╗  
-██║  ██║██╔══██║╚██╗ ██╔╝██║██║  ██║██╔══╝  
-██████╔╝██║  ██║ ╚████╔╝ ██║██████╔╝███████╗
-╚═════╝ ╚═╝  ╚═╝  ╚═══╝  ╚═╝╚═════╝ ╚══════╝`}
+          {banner}
         </div>
 
         <div className="mb-8">
@@ -66,8 +71,8 @@ export function Hero() {
               <Link href="#contact">mail contact</Link>
             </Button>
             <Button size="lg" variant="outline" className="border-green-400 text-green-400 hover:bg-green-400 hover:text-black">
-              <a href="https://giugno25-digiovannidavide.tiiny.site/" target="_blank" rel="noopener noreferrer">
-                wget resume.pdf
+              <a href="/resume.pdf" download>
+                Download resume.pdf
               </a>
             </Button>
           </div>
@@ -77,18 +82,18 @@ export function Hero() {
           <div className="flex justify-start space-x-6 mb-12">
             <Button variant="ghost" size="icon" className="text-green-400 hover:bg-green-400 hover:text-black">
               <Link href="https://github.com/itsmedigio" target="_blank" rel="noopener noreferrer">
-                <Github className="h-6 w-6" />
+                <GitPullRequestCreateArrow className="h-6 w-6" />
                 <span className="sr-only">GitHub</span>
               </Link>
             </Button>
             <Button variant="ghost" size="icon" className="text-green-400 hover:bg-green-400 hover:text-black">
               <Link href="https://linkedin.com/in/itsmedigio" target="_blank" rel="noopener noreferrer">
-                <Linkedin className="h-6 w-6" />
+                <Contact className="h-6 w-6" />
                 <span className="sr-only">LinkedIn</span>
               </Link>
             </Button>
             <Button variant="ghost" size="icon" className="text-green-400 hover:bg-green-400 hover:text-black">
-              <Link href="mailto:davidedigiovanni25@gmail.com">
+              <Link href="mailto:davide@davidedigiovanni.it">
                 <Mail className="h-6 w-6" />
                 <span className="sr-only">Email</span>
               </Link>

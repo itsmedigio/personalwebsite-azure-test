@@ -29,7 +29,7 @@ jobs:
           cache-dependency-path: "**/package-lock.json" # Specify lock file for caching
 
       - name: Install dependencies 👨🏻‍💻
-        run: npm i --force
+        run: npm ci
 
       - name: Build Next.js Static Website 🚀
         run: npm run build # Changed from 'generate' to 'build' for Next.js static export

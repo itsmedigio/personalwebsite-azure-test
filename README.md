@@ -1,5 +1,7 @@
 # Personal Portfolio Website
 
+### This repo is only used to store source code for my personal portfolio website. The live version of the website can be accessed at [https://davidedigiovanni.it](https://davidedigiovanni.it)
+
 ---
 
 ## Introduction
