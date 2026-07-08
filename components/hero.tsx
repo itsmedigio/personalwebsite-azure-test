@@ -49,6 +49,10 @@ __ __ _____| |__ ___ _ __  ___  | |_ ___   _ __ _  _
   return (
     <section id="home" className="min-h-screen flex flex-col justify-center px-4 sm:px-6 lg:px-8 bg-background text-green-400 relative" onClick={handleSkip}>
       <div className="text-left max-w-4xl mx-auto font-mono w-full" onClick={e => e.stopPropagation()}>
+        <h1 className="sr-only">Davide Di Giovanni - DevOps Engineer, Cloud Architect, and Automation Specialist</h1>
+        <p className="max-w-2xl text-lg text-green-200/80 mb-8">
+          I build resilient cloud infrastructure, automate delivery workflows, and help teams ship with confidence.
+        </p>
         <div className="mb-6 hidden md:block text-green-500/60 font-bold whitespace-pre select-none">
           {banner}
         </div>
