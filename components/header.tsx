@@ -1,11 +1,15 @@
 "use client"
 
 import { Button } from "@/components/ui/button"
-import { Menu, X } from "lucide-react"
+import { Menu, Terminal, X } from "lucide-react"
 import Link from "next/link"
 import { useEffect, useState } from "react"
 
-export function Header() {
+interface HeaderProps {
+  onTerminalOpen?: () => void
+}
+
+export function Header({ onTerminalOpen }: HeaderProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
 
@@ -33,12 +37,20 @@ export function Header() {
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
-          <Link href="#home" className="text-xl font-bold text-green-400 font-mono">
+          <Link href="#home" className="text-xl font-bold text-green-400 font-mono flex items-center gap-2">
+            <Terminal className="h-5 w-5" />
             ~/davidedigiovanni.it
           </Link>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex space-x-8 items-center">
+            <button
+              onClick={onTerminalOpen}
+              className="text-green-400 hover:text-green-300 font-mono transition-colors flex items-center gap-1"
+            >
+              <Terminal className="h-4 w-4" />
+              terminal
+            </button>
             {navItems.map((item) => (
               <Link key={item.href} href={item.href} className="text-green-400 hover:text-green-300 font-mono transition-colors">
                 {item.label}
@@ -55,6 +67,13 @@ export function Header() {
         {/* Mobile Navigation */}
         {isMenuOpen && (
           <nav className="md:hidden py-4 border-t border-green-400">
+            <button
+              onClick={() => { onTerminalOpen?.(); setIsMenuOpen(false) }}
+              className="block w-full text-left py-2 text-green-400 hover:text-green-300 font-mono transition-colors flex items-center gap-2"
+            >
+              <Terminal className="h-4 w-4" />
+              terminal
+            </button>
             {navItems.map((item) => (
               <Link
                 key={item.href}

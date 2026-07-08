@@ -26,7 +26,7 @@ export function Footer() {
 
       <div className="flex items-center space-x-4 text-xs md:text-sm">
         <span className="hidden lg:inline">P.IVA: 13306860019</span>
-        <span className="hidden lg:inline">© 2026 itsmedigio.github.io</span>
+        <span className="hidden lg:inline">© 2026 davidedigiovanni.it</span>
         <span className="hidden md:inline">UPTIME: 42d 13h</span>
         <span className="hidden lg:inline">MEM: [||||||    ] 60%</span>
         <span>{time}</span>
