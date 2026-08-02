@@ -1,0 +1,77 @@
+name: Deploy Static Website to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy: # Renamed job for clarity
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      matrix:
+        os: [ubuntu-latest]
+        node: [20.x] # Use specific LTS versions instead of lts/* for better reproducibility
+
+    steps:
+      - name: Checkout Source Repository 🛎
+        uses: actions/checkout@v4 # Updated to v4 for latest features/security
+
+      - name: Setup Node.js Environment 🏗
+        uses: actions/setup-node@v4 # Updated to v4
+        with:
+          node-version: ${{ matrix.node }}
+          cache: "npm" # Use built-in cache for npm
+          cache-dependency-path: "**/package-lock.json" # Specify lock file for caching
+
+      - name: Install dependencies 👨🏻‍💻
+        run: npm ci
+
+      - name: Build Next.js Static Website 🚀
+        run: npm run build # Changed from 'generate' to 'build' for Next.js static export
+
+      - name: Run Gitleaks 🔐
+        uses: gitleaks/gitleaks-action@v2
+
+      - name: Run Trivy FS scan 🛡️
+        uses: aquasecurity/trivy-action@master
+        with:
+          scan-type: fs
+          format: table
+          exit-code: 0
+
+      - name: Deploy to itsmedigio.github.io 📤
+        env:
+          GH_PAGES_REPO: itsmedigio/itsmedigio.github.io.git
+          SOURCE_DIR: out # Next.js static export output directory
+        run: |
+          # The current working directory is the repository where the workflow runs (e.g., personalwebsite-azure-test)
+          # We need to clone the target repo (itsmedigio.github.io) in a sibling directory.
+          cd .. # Move up one level from the source repo directory
+
+          # Clone the target repository
+          git clone https://${{secrets.ACCESS_TOKEN}}@github.com/$GH_PAGES_REPO deploy_repo
+
+          # Navigate into the cloned target repository
+          cd ./deploy_repo/
+
+          git rm -rf *
+
+          cp -a ../personalwebsite-azure-test/${SOURCE_DIR}/. . # Copy contents from source repo's 'out' to target repo root
+
+          cp -a ../personalwebsite-azure-test/CNAME .
+
+          ls -la # List files to verify copy
+
+          # Configure Git user for commits
+          git config user.email "itsmedigio@users.noreply.github.com"
+          git config user.name "itsmedigio_cicd"
+
+          # Add all changes, commit if there are changes, and push
+          git add . -A
+          git commit -m "Automated deploy from CI/CD"
+          git push
