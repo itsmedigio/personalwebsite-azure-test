@@ -47,25 +47,25 @@ export function Experience() {
     <section id="experience" className="py-20 px-4 sm:px-6 lg:px-8 bg-background text-green-400">
       <div className="container mx-auto max-w-6xl font-mono">
         <div className="mb-16">
-          <div className="flex items-center mb-4">
+          <div className="flex flex-wrap items-center mb-4">
             <span className="text-green-400">$ </span>
-            <span className="text-2xl"><TypingText text='git log --oneline --graph --author="Davide"' speed={100} onComplete={() => setShowContent(true)} /></span>
+            <span className="min-w-0 break-words text-base sm:text-2xl"><TypingText text='git log --oneline --graph --author="Davide"' speed={100} onComplete={() => setShowContent(true)} /></span>
           </div>
           {showContent && (
             <div className="ml-2 font-mono leading-relaxed">
               {commits.slice(0, currentCommit + 1).map((commit, index) => (
-                <div key={commit.hash} className="mb-6 flex">
+                <div key={commit.hash} className="mb-6 flex min-w-0">
                   <div className="mr-4 text-green-600">
                     <div>*</div>
                     {index < commits.length - 1 && <div className="h-full border-l border-green-600 ml-1.5 mt-1 -mb-1 opacity-50"></div>}
                   </div>
-                  <div>
+                  <div className="min-w-0 break-words">
                     <div>
                       <span className="text-yellow-500 font-bold">{commit.hash}</span>
                       {commit.branch && <span className="text-cyan-400"> ({commit.branch})</span>} <span className="text-gray-400">[{commit.date}]</span> - <span className="font-bold">{commit.message}</span>
                       <span className="text-green-500 ml-2">&lt;Davide&gt;</span>
                     </div>
-                    <div className="mt-2 text-sm text-green-300">
+                    <div className="mt-2 text-base leading-7 text-green-300">
                       {commit.details.map((detail, idx) => (
                         <div key={idx} className="ml-4">
                           <TypingText text={`|  - ${detail}`} speed={20} />

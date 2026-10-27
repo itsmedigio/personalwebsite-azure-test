@@ -47,30 +47,30 @@ __ __ _____| |__ ___ _ __  ___  | |_ ___   _ __ _  _
 `
 
   return (
-    <section id="home" className="min-h-screen flex flex-col justify-center px-4 sm:px-6 lg:px-8 bg-background text-green-400 relative" onClick={handleSkip}>
+    <section id="home" className="min-h-screen flex flex-col justify-center px-4 pt-32 pb-20 sm:px-6 sm:pt-36 lg:px-8 bg-background text-green-400 relative" onClick={handleSkip}>
       <div className="text-left max-w-4xl mx-auto font-mono w-full" onClick={e => e.stopPropagation()}>
         <h1 className="sr-only">Davide Di Giovanni - DevOps Engineer, Cloud Architect, and Automation Specialist</h1>
-        <p className="max-w-2xl text-lg text-green-200/80 mb-8">
-          I build resilient cloud infrastructure, automate delivery workflows, and help teams ship with confidence.
+        <p className="max-w-2xl text-base leading-8 text-green-200 mb-10 sm:text-lg sm:mb-12">
+          I help teams keep their cloud systems reliable, reduce repetitive work, and release software with confidence.
         </p>
         <div className="mb-6 hidden md:block text-green-500/60 font-bold whitespace-pre select-none">
           {banner}
         </div>
 
         <div className="mb-8">
-          <div className="flex items-center mb-4">
+          <div className="flex flex-wrap items-center mb-4">
             <span className="text-green-400 mr-2">itsmedigio@portfolio:~$</span>
-            <span className="text-2xl">
+            <span className="min-w-0 break-words text-lg sm:text-2xl">
               <TypingText text="whoami" speed={80} showCursor={!showContent} instant={skipAll} onComplete={() => setShowContent(true)} />
             </span>
           </div>
           {showContent && (
             <div className="ml-4">
-              <span className="text-xl">
+              <span className="text-lg sm:text-xl">
                 <GlitchText text="Davide Di Giovanni" interval={5000} intensity={2} />
               </span>
               <br />
-              <span className="text-lg">
+              <span className="text-base leading-7 sm:text-lg">
                 <TypingText text="DevOps Engineer | Automation Enthusiast | Cloud Architect" speed={30} showCursor={false} instant={skipAll} />
               </span>
             </div>
@@ -79,9 +79,11 @@ __ __ _____| |__ ___ _ __  ___  | |_ ___   _ __ _  _
 
         {showContent && (
           <div className="mb-8">
-            <div className="flex items-center mb-4">
+            <div className="flex flex-wrap items-center mb-4">
               <span className="text-green-400 mr-2">itsmedigio@portfolio:~$</span>
-              <TypingText text="cat skills.txt" speed={80} showCursor={!showButtons} instant={skipAll} />
+              <span className="min-w-0 break-words">
+                <TypingText text="cat skills.txt" speed={80} showCursor={!showButtons} instant={skipAll} />
+              </span>
             </div>
             <div className="ml-4">
               <TypingText text="• Ansible • Terraform • Kubernetes • AWS/Azure • CI/CD • Python • Bash" speed={25} showCursor={false} instant={skipAll} onComplete={() => setShowButtons(true)} />
@@ -90,17 +92,17 @@ __ __ _____| |__ ___ _ __  ___  | |_ ___   _ __ _  _
         )}
 
         {showButtons && (
-          <div className="flex flex-wrap gap-4 justify-start items-center mb-12">
-            <Button size="lg" variant="outline" className="border-green-400 text-green-400 hover:bg-green-400 hover:text-black">
-              <Link href="#projects">view projects</Link>
+          <div className="flex flex-col gap-3 justify-start items-stretch mb-8 sm:flex-row sm:flex-wrap sm:items-center sm:gap-4 sm:mb-12">
+            <Button size="lg" variant="outline" className="w-full border-green-400 text-green-400 hover:bg-green-400 hover:text-black sm:w-auto" asChild>
+              <Link href="#projects">View projects</Link>
             </Button>
-            <Button size="lg" variant="outline" className="border-green-400 text-green-400 hover:bg-green-400 hover:text-black">
-              <Link href="#contact">mail contact</Link>
+            <Button size="lg" variant="outline" className="w-full border-green-400 text-green-400 hover:bg-green-400 hover:text-black sm:w-auto" asChild>
+              <Link href="#contact">Get in touch</Link>
             </Button>
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
-                <Button size="lg" variant="outline" className="border-green-400 text-green-400 hover:bg-green-400 hover:text-black gap-1">
-                  curriculum vitae <ChevronDown className="h-4 w-4" />
+                <Button size="lg" variant="outline" className="w-full border-green-400 text-green-400 hover:bg-green-400 hover:text-black gap-1 sm:w-auto">
+                  Download CV <ChevronDown className="h-4 w-4" />
                 </Button>
               </DropdownMenuTrigger>
               <DropdownMenuContent className="bg-black border-green-400 text-green-400 font-mono">

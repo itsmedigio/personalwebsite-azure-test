@@ -81,12 +81,14 @@ export function Contact() {
     <section id="contact" className="py-20 px-4 sm:px-6 lg:px-8 bg-black text-green-400">
       <div className="container mx-auto max-w-6xl font-mono">
         <div className="mb-16">
-          <div className="flex items-center mb-4">
+          <div className="flex flex-wrap items-center mb-4">
             <span className="text-green-400">$ </span>
-            <TypingText text="mail -s 'Hello' davide@davidedigiovanni.it" speed={100} onComplete={() => setShowContent(true)} />
+            <span className="min-w-0 break-words text-base sm:text-2xl">
+              <TypingText text="mail -s 'Hello' davide@davidedigiovanni.it" speed={100} onComplete={() => setShowContent(true)} />
+            </span>
           </div>
           {showContent && (
-            <div className="ml-4">
+            <div className="ml-2 max-w-3xl break-words leading-8 sm:ml-4">
               <TypingText text="Subject: New Project Opportunity" speed={50} />
               <br />
               <TypingText text="From: you@domain.com" speed={30} />

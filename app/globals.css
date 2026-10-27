@@ -54,11 +54,17 @@
 
   body {
     @apply bg-background text-foreground;
+    font-size: 16px;
+    line-height: 1.75;
   }
 }
 
 html {
   scroll-behavior: smooth;
+}
+
+section[id] {
+  scroll-margin-top: 5rem;
 }
 
 /* ── Enhanced CRT Scanlines ── */
@@ -74,8 +80,8 @@ html {
       0deg,
       rgba(0, 0, 0, 0) 0px,
       rgba(0, 0, 0, 0) 1px,
-      rgba(0, 0, 0, 0.15) 1px,
-      rgba(0, 0, 0, 0.15) 2px
+      rgba(0, 0, 0, 0.08) 1px,
+      rgba(0, 0, 0, 0.08) 2px
     ),
     linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.03));
   z-index: 100;
@@ -91,7 +97,7 @@ html {
   left: 0;
   bottom: 0;
   right: 0;
-  background: radial-gradient(ellipse at center, transparent 60%, rgba(0, 0, 0, 0.4) 100%);
+  background: radial-gradient(ellipse at center, transparent 70%, rgba(0, 0, 0, 0.2) 100%);
   z-index: 100;
   pointer-events: none;
 }
@@ -110,10 +116,6 @@ html {
   70% { opacity: 0.97; }
   80% { opacity: 0.99; }
   90% { opacity: 0.95; }
-}
-
-.crt {
-  animation: flicker 0.2s infinite;
 }
 
 /* ── Custom Scrollbar ── */
@@ -169,6 +171,12 @@ html {
   padding: 1rem;
 }
 
+@media (max-width: 640px) {
+  .terminal-window-content {
+    padding: 0.75rem;
+  }
+}
+
 /* ── Glitch effect ── */
 @keyframes glitch-skew {
   0% { transform: skew(0deg); }
@@ -190,4 +198,19 @@ html {
 
 .glow-strong {
   text-shadow: 0 0 5px rgba(0, 255, 0, 0.5), 0 0 15px rgba(0, 255, 0, 0.2), 0 0 30px rgba(0, 255, 0, 0.1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
 }

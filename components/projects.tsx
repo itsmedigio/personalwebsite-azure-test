@@ -50,15 +50,15 @@ export function Projects() {
     <section id="projects" className="py-20 px-4 sm:px-6 lg:px-8 bg-background text-green-400">
       <div className="container mx-auto max-w-6xl font-mono">
         <div className="mb-16">
-          <div className="flex items-center mb-4">
+          <div className="flex flex-wrap items-center mb-4">
             <span className="text-green-400">$ </span>
-            <span className="text-2xl"><TypingText text="ls -la projects/" speed={100} onComplete={() => setShowContent(true)} /></span>
+            <span className="min-w-0 break-words text-base sm:text-2xl"><TypingText text="ls -la projects/" speed={100} onComplete={() => setShowContent(true)} /></span>
           </div>
           {showContent && (
-            <div className="ml-4">
+            <div className="ml-2 max-w-4xl break-words leading-8 sm:ml-4">
               <div className="mb-4">total {projects.length}</div>
               {projects.slice(0, currentProject + 1).map((project, index) => (
-                <div key={index} className="mb-6">
+                <div key={index} className="mb-8">
                   <div className="text-green-300">drwxr-xr-x 2 user user 4096 {new Date().toISOString().split('T')[0]} project_{index + 1}</div>
                   <div className="ml-4 mt-2">
                     <TypingText text={`Name: ${project.title}`} speed={50} />

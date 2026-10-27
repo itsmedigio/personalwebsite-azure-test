@@ -22,13 +22,14 @@ export function Header({ onTerminalOpen }: HeaderProps) {
   }, [])
 
   const navItems = [
-    { href: "#home", label: "whoami" },
-    { href: "#about", label: "cat about.md" },
-    { href: "#projects", label: "ls projects/" },
+    { href: "#home", label: "Home" },
+    { href: "#about", label: "About" },
+    { href: "#experience", label: "Experience" },
+    { href: "#projects", label: "Projects" },
     {
-      href: "#skills", label: "cat skills.yml"
+      href: "#skills", label: "Skills"
     },
-    { href: "#contact", label: "mail" },
+    { href: "#contact", label: "Contact" },
   ]
 
   return (
@@ -37,9 +38,9 @@ export function Header({ onTerminalOpen }: HeaderProps) {
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
-          <Link href="#home" className="text-xl font-bold text-green-400 font-mono flex items-center gap-2">
+          <Link href="#home" className="min-w-0 text-sm sm:text-xl font-bold text-green-400 font-mono flex items-center gap-2">
             <Terminal className="h-5 w-5" />
-            ~/davidedigiovanni.it
+            <span className="truncate">~/davidedigiovanni.it</span>
           </Link>
 
           {/* Desktop Navigation */}
@@ -49,7 +50,7 @@ export function Header({ onTerminalOpen }: HeaderProps) {
               className="text-green-400 hover:text-green-300 font-mono transition-colors flex items-center gap-1"
             >
               <Terminal className="h-4 w-4" />
-              terminal
+              Open terminal
             </button>
             {navItems.map((item) => (
               <Link key={item.href} href={item.href} className="text-green-400 hover:text-green-300 font-mono transition-colors">
@@ -72,7 +73,7 @@ export function Header({ onTerminalOpen }: HeaderProps) {
               className="block w-full text-left py-2 text-green-400 hover:text-green-300 font-mono transition-colors flex items-center gap-2"
             >
               <Terminal className="h-4 w-4" />
-              terminal
+              Open terminal
             </button>
             {navItems.map((item) => (
               <Link

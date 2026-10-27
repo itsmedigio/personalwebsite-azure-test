@@ -15,12 +15,12 @@ export function About() {
     <section id="about" className="py-20 px-4 sm:px-6 lg:px-8 bg-background text-green-400">
       <div className="container mx-auto max-w-6xl font-mono">
         <div className="mb-16">
-          <div className="flex items-center mb-4">
+          <div className="flex flex-wrap items-center mb-4">
             <span className="text-green-400">$ </span>
-            <span className="text-2xl"><TypingText text=" cat about.md" speed={100} onComplete={() => setShowContent(true)} /></span>
+            <span className="min-w-0 break-words text-base sm:text-2xl"><TypingText text=" cat about.md" speed={100} onComplete={() => setShowContent(true)} /></span>
           </div>
           {showContent && (
-            <div className="ml-4">
+            <div className="ml-2 max-w-3xl break-words leading-8 sm:ml-4">
               <span className="text-xl"><TypingText text="# About Me" speed={50} /></span>
               <br />
               <TypingText text="Ever since I was a kid, I liked messing around with computers—breaking things, fixing them, and figuring out how they worked." speed={30} />
@@ -47,7 +47,7 @@ export function About() {
         </div>
 
         {showContent && (
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid gap-4 sm:gap-8 md:grid-cols-3">
             <div className="border border-green-400 p-6 text-center">
               <div className="text-2xl mb-4">{'</>'}</div>
               <h3 className="text-xl font-semibold mb-2 text-green-300">Clean Code</h3>
