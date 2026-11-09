@@ -19,7 +19,7 @@ jobs:
 
     steps:
       - name: Checkout Source Repository 🛎
-        uses: actions/checkout@v4 # Updated to v4 for latest features/security
+        uses: actions/checkout@v7 # Updated to v4 for latest features/security
 
       - name: Setup Node.js Environment 🏗
         uses: actions/setup-node@v4 # Updated to v4
