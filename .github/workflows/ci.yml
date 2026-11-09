@@ -35,7 +35,7 @@ jobs:
         run: npm run build # Changed from 'generate' to 'build' for Next.js static export
 
       - name: Run Gitleaks 🔐
-        uses: gitleaks/gitleaks-action@v2
+        uses: gitleaks/gitleaks-action@v3
 
       - name: Run Trivy FS scan 🛡️
         uses: aquasecurity/trivy-action@master
